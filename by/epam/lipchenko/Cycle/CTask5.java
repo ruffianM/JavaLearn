@@ -7,21 +7,18 @@ package by.epam.lipchenko.Cycle;
  */
 
 public class CTask5 {
-
     public static void main(String[] args) {
 
         double e = 0.00012345;
         double sum = 0;
-        double a;
-        boolean cycleTrigger = true;
 
-        for (int i = 1; cycleTrigger; i++) {      //Запускаем цикл
+        for (int i = 1;; i++) {
 
-            a = 1 / Math.pow(i + 1, i);         //Вычисляем первый член ряда
-            if (a >= e) {                      //И если он больше е,
-                sum += a;                    //то добавляем к сумме
-            } else cycleTrigger = false;   //Если становится а<е, то триггер завершает цикл
+            double a = 1 / Math.pow(2, i) + 1 / Math.pow(3, i);
 
+                if (a >= e) {
+                    sum += a;
+                } else break;
         }
         System.out.println("The sum is " + sum);
     }
