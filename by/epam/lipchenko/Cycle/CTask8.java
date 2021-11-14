@@ -15,59 +15,56 @@ public class CTask8 {
 
         int num1 = InputNatural();
         System.out.println("Good! And another one...");
+
         int num2 = InputNatural();
         System.out.println("The matching digits of these numbers are: ");
-        findMatchingDigits(num1, num2);
+
+        findMatchingDigits(num1,num2);
     }
 
     private static void findMatchingDigits(int num1, int num2) {
 
-        for (int i = 0; i <= 9; i++) {          //Цикл перебирает цифры от 0 до 9 и находит совпадения в числах.
-            int remainder1 = num1;              //Если совпадение в обоих - то выводит число на экран
+        for (int i = 0; i <= 9; i++) {              //Поочерёдно выбираем цифры от 0 до 9
+
+            int remainder1 = num1;
             int remainder2 = num2;
-            boolean flag2 = false;
             boolean flag1 = false;
+            boolean flag2 = false;
 
-            while (remainder1 != 0) {
-
+            for (; remainder1 != 0; remainder1 /= 10) {   //...и сравниваем с каждым разрядом обоих чисел
                 if (remainder1 % 10 == i) {
                     flag1 = true;
                     break;
                 }
-                remainder1 /= 10;
             }
-
-            while (remainder2 != 0) {
-
-                if (remainder2 % 10 == i) {
+            for (; remainder2 != 0; remainder2 /= 10) {
+                if (remainder1 % 10 == i) {
                     flag2 = true;
                     break;
                 }
-                remainder2 /= 10;
             }
-
             if (flag1 && flag2) {
-                System.out.print(i + " ");
+                System.out.print(i + " ");        //Если совпадение происходит в обеих случаях - выводим на экран
             }
         }
     }
 
-    private static int InputNatural() {
+    private static int InputNatural () {
 
-        int num;
+            int num;
 
-        do {
-            System.out.println("Please enter integer number: ");
+            do {
+                System.out.println("Please enter integer number: ");
 
-            while (!input.hasNextInt()) {
-                System.out.println("Invalid input! Please enter only integer number!");
-                input.next();
-            }
-            num = input.nextInt();
-            num = java.lang.Math.abs(num);
+                while (!input.hasNextInt()) {
+                    System.out.println("Invalid input! Please enter only integer number!");
+                    input.next();
+                }
+                num = input.nextInt();
+                num = java.lang.Math.abs(num);
 
-        } while (num < 0);
+            } while (num < 0);
 
-        return num;
-    }
+            return num;
+        }
 }
